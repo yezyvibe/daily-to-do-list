@@ -8,6 +8,7 @@ export default function App({ $target }) {
     todoList: [],
     inputValue: "",
     selectedItem: "",
+    userName: "",
   };
 
   this.setState = (nextState) => {
@@ -17,15 +18,18 @@ export default function App({ $target }) {
       todoList: this.state.todoList,
     });
     todoState.setState(this.state.todoList);
+    userName.setState(this.state.userName);
   };
-
-  const $component = document.createElement("div");
-  $component.innerHTML = "<h1>Daily Todolist</h1>";
-  $target.appendChild($component);
 
   const userName = new UserName({
     $target,
-    initialState: "",
+    initialState: this.state.userName,
+    onSubmit: (name) => {
+      this.setState({
+        ...this.state,
+        userName: name,
+      });
+    },
   });
 
   const todoState = new TodoState({
