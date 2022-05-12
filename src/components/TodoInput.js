@@ -21,5 +21,4 @@ export default function TodoInput({ $target, onAddTodo }) {
     onAddTodo(e.target.value);
     $component.querySelector(".Todo-Input").value = "";
   });
-  $component.querySelector(".Todo-Input").focus();
 }

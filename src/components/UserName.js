@@ -9,7 +9,7 @@ export default function UserName({ $target, initialState, onSubmit }) {
       ${
         this.state
           ? `<h1> ${this.state}'s Daily Todolist</h1>`
-          : `<input type="text" placeHolder="이름을 입력해주세요"></input>`
+          : `<input class="userNameInput" type="text" placeHolder="이름을 입력해주세요"></input>`
       } 
     `;
   };
@@ -29,8 +29,10 @@ export default function UserName({ $target, initialState, onSubmit }) {
 
     if (userName.trim().length > 0) {
       onSubmit(userName);
+      $target.querySelector(".Todo-Input").focus();
     }
   });
 
   this.render();
+  $component.querySelector(".userNameInput").focus();
 }

@@ -19,16 +19,21 @@ export default function App({ $target }) {
     });
     todoState.setState(this.state.todoList);
     userName.setState(this.state.userName);
+    localStorage.setItem(this.state.userName, JSON.stringify(this.state));
   };
 
   const userName = new UserName({
     $target,
     initialState: this.state.userName,
     onSubmit: (name) => {
-      this.setState({
-        ...this.state,
-        userName: name,
-      });
+      if (localStorage.getItem(name)) {
+        this.setState(JSON.parse(localStorage.getItem(name)));
+      } else {
+        this.setState({
+          ...this.state,
+          userName: name,
+        });
+      }
     },
   });
 

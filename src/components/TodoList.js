@@ -12,7 +12,7 @@ export default function TodoList({ $target, initialState, onClick }) {
       ${this.state.todoList
         .map(
           (item, index) => `
-        <li data-todo-id="${index}">${item.name}<input type="checkBox" ${
+          <li data-todo-id="${index}">${item.name}<input type="checkBox" ${
             item.isChecked ? "checked" : ""
           }></input></li>
       `
